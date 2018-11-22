@@ -24,15 +24,15 @@ def read_email_from_gmail():
 
 
         for i in range(latest_email_id,first_email_id, -1):
-            typ, data = mail.fetch(i, '(RFC822)' )
+            typ, data = mail.fetch(str(i).encode(), '(RFC822)')
 
             for response_part in data:
                 if isinstance(response_part, tuple):
-                    msg = email.message_from_string(response_part[1])
+                    msg = email.message_from_string(str(response_part[1]))
                     email_subject = msg['subject']
                     email_from = msg['from']
-                    print('From : ' + email_from + '\n')
-                    print('Subject : ' + email_subject + '\n')
+                    print('From : ', email_from, '\n')
+                    print('Subject : ', email_subject, '\n')
 
     except Exception as e:
         print(str(e))
