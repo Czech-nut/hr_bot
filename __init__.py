@@ -9,6 +9,6 @@ rawMessages = imapObj.fetch(UIDs, ['BODY[]'])
 print(rawMessages)
 
 for key, rawMessage in rawMessages.items():
-    message = pyzmail.PyzMessage.factory(rawMessage['BODY[]'])
+    message = pyzmail.PyzMessage.factory(rawMessage[b'BODY[]'])
     message_body = message.text_part.get_payload().decode(message.text_part.charset)
     print(message_body)
