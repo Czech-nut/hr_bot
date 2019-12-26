@@ -2,7 +2,7 @@ import imapclient
 import pyzmail
 
 imapObj = imapclient.IMAPClient('imap.gmail.com', ssl = True)
-imapObj.login('valery.voitova@gmail.com', 'hrbottest2206')
+imapObj.login('your_mail@gmail.com', 'password')
 imapObj.select_folder('Candidates', readonly = True)
 UIDs = imapObj.search(['UNANSWERED'])
 rawMessages = imapObj.fetch(UIDs, ['BODY[]'])
